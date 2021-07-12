@@ -1,38 +1,68 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  min-height: 100vh;
+  background-color: aliceblue;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 8vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 7vmin;
   color: white;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.Login {
+  font-size: 4vmin;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Login button,
+.MostVoted button {
+  width: 27%;
+  margin-right: 4.5vw;
+  margin-left: 4.5vw;
+  font-size: 3vmin;
+  height: 3vh;
+}
+
+.Nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Nav button {
+  width: 33%;
+  height: 3vh;
+  margin-top: 3vh;
+  font-size: 3vmin;
+}
+
+.MostVoted {
+  margin-top: 3vh;
+  border-top: 3px solid;
+}
+
+.MostVoted h3 {
+  font-size: 6vmin;
+}
+
+.MostVotedReview {
+  text-align: justify;
+  padding: 0 7% 0 7%;
+  font-size: 5vmin;
+  border: 1px solid;
+  margin: 0 7% 4% 7%;
+}
+
+.MostVotedCount {
+  font-size: 4vmin;
+}
+
+.MostVoted button {
+  margin-bottom: 3vh;
 }
