@@ -3,32 +3,16 @@ const Comments = () => {
     <div className="Comments">
       <ul>
         <li>
-          <h4>Review</h4>
-          <p>info</p>
-          <p>info</p>
-          <p>info</p>
-          <p>info</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </li>
         <li>
-          <h4>Review</h4>
-          <p>info</p>
-          <p>info</p>
-          <p>info</p>
-          <p>info</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </li>
         <li>
-          <h4>Review</h4>
-          <p>info</p>
-          <p>info</p>
-          <p>info</p>
-          <p>info</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </li>
         <li>
-          <h4>Review</h4>
-          <p>info</p>
-          <p>info</p>
-          <p>info</p>
-          <p>info</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </li>
       </ul>
     </div>

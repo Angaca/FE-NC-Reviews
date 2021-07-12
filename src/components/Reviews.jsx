@@ -1,42 +1,27 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getReviews } from "../api";
 
 const Reviews = () => {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    getReviews().then(({ data }) => setReviews(data.reviews));
+  }, []);
+
   return (
     <div className="Reviews">
       <ul>
-        <Link to="/Comments">
-          <li>
-            <h4>Review</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit est magnam veniam illo. Nam perferendis odio dicta
-              laudantium ea deleniti quisquam voluptatem magnam exercitationem
-              pariatur, modi eveniet nulla illum fugiat.
-            </p>
-          </li>
-        </Link>
-        <Link to="/Comments">
-          <li>
-            <h4>Review</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit est magnam veniam illo. Nam perferendis odio dicta
-              laudantium ea deleniti quisquam voluptatem magnam exercitationem
-              pariatur, modi eveniet nulla illum fugiat.
-            </p>
-          </li>
-        </Link>
-        <Link to="/Comments">
-          <li>
-            <h4>Review</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit est magnam veniam illo. Nam perferendis odio dicta
-              laudantium ea deleniti quisquam voluptatem magnam exercitationem
-              pariatur, modi eveniet nulla illum fugiat.
-            </p>
-          </li>
-        </Link>
+        {reviews.map((review) => {
+          return (
+            <Link to={`Review/${review.review_id}`}>
+              <li key={review.review_id}>
+                <h4>{review.title}</h4>
+                <p>{review.review_body}</p>
+              </li>
+            </Link>
+          );
+        })}
       </ul>
     </div>
   );

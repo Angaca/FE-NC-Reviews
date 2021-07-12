@@ -7,7 +7,7 @@ import Nav from "./components/Nav";
 import Reviews from "./components/Reviews";
 import Users from "./components/Users";
 import Categories from "./components/Categories";
-import Comments from "./components/Comments";
+import Review from "./components/Review";
 
 function App() {
   return (
@@ -28,8 +28,8 @@ function App() {
         <Route exact path="/Categories">
           <Categories />
         </Route>
-        <Route exact path="/Comments">
-          <Comments />
+        <Route exact path="/Review/:review_id">
+          <Review />
         </Route>
       </Switch>
     </div>
