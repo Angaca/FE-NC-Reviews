@@ -22,11 +22,12 @@
 
 .Login button,
 .MostVoted button {
-  width: 27%;
+  min-width: 18vw;
   margin-right: 4.5vw;
   margin-left: 4.5vw;
   font-size: 3vmin;
-  height: 3vh;
+  min-height: 3vh;
+  max-height: 5vh;
 }
 
 .Nav {
@@ -36,8 +37,9 @@
 }
 
 .Nav button {
-  width: 33%;
-  height: 3vh;
+  min-width: 20vw;
+  min-height: 3vh;
+  max-height: 5vh;
   margin-top: 3vh;
   font-size: 3vmin;
 }
@@ -65,4 +67,21 @@
 
 .MostVoted button {
   margin-bottom: 3vh;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Reviews,
+.Users,
+.Categories {
+  font-size: 5vmin;
+  padding: 0 7%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
