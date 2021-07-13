@@ -5,7 +5,7 @@ import { UserContext } from "../contexts/User";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     getUsers().then(({ data }) => setUsers(data.users));
@@ -13,7 +13,11 @@ const Users = () => {
 
   return (
     <div className="Users">
-      <h3>Please select your user</h3>
+      {user ? (
+        <h3>Registered users</h3>
+      ) : (
+        <h3>Please login first by selecting your user</h3>
+      )}
       <ul>
         {users.map((user) => {
           return (

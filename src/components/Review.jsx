@@ -13,11 +13,13 @@ const Review = () => {
 
   return (
     <div className="Review">
-      <h4>{review.title}</h4>
+      <h3>{review.title}</h3>
       <img src={review.review_img_url} alt="Review" />
       <p>{review.review_body}</p>
-      <p>Author: {review.owner}</p>
-      <Comments />
+      <p>
+        <em>Review by</em> <b>{review.owner}</b>
+      </p>
+      <Comments review_id={review_id} />
     </div>
   );
 };

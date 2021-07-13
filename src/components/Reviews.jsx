@@ -17,7 +17,10 @@ const Reviews = () => {
             <Link to={`Reviews/${review.review_id}`}>
               <li key={review.review_id}>
                 <h4>{review.title}</h4>
-                <p>{review.review_body}</p>
+                <h6>Preview ⬇️</h6>
+                <p>{review.review_body.slice(0, 70)}...</p>
+                <p>Current votes: {review.votes}</p>
+                <p>Current comments: {review.comment_count}</p>
               </li>
             </Link>
           );

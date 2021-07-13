@@ -10,10 +10,10 @@ const Nav = () => {
       <Link to="/Users">
         {user ? <button>Users</button> : <button>Login</button>}
       </Link>
-      <Link to="/Reviews">
+      <Link to={user ? "/Reviews" : "/Users"}>
         <button> Reviews</button>
       </Link>
-      <Link to="/Categories">
+      <Link to={user ? "/Categories" : "/Users"}>
         <button>Categories</button>
       </Link>
     </div>

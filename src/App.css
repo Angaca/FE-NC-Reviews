@@ -78,7 +78,8 @@ ul {
 .Users,
 .Categories,
 .Review,
-.User {
+.User,
+.Comments {
   font-size: 5vmin;
   padding: 0 7%;
 }
@@ -100,4 +101,12 @@ a {
 .User img {
   width: 70vw;
   max-width: 300px;
+}
+
+.Reviews li {
+  border-bottom: dotted;
+}
+
+.Comments {
+  border-top: double;
 }

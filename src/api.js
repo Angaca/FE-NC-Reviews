@@ -8,6 +8,19 @@ export const getReviews = async () => {
   return await gamesApi.get("/reviews");
 };
 
+export const getMostVotedReview = async () => {
+  return await gamesApi.get("/reviews", {
+    params: {
+      limit: "1",
+      sort_by: "votes",
+    },
+  });
+};
+
+export const getComments = async (review_id) => {
+  return await gamesApi.get(`/reviews/${review_id}/comments`);
+};
+
 export const getReview = async (review_id) => {
   return await gamesApi.get(`/reviews/${review_id}`);
 };
