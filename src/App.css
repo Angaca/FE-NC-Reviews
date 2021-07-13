@@ -77,7 +77,8 @@ ul {
 .Reviews,
 .Users,
 .Categories,
-.Review {
+.Review,
+.User {
   font-size: 5vmin;
   padding: 0 7%;
 }
@@ -89,4 +90,14 @@ a {
 
 .Review img {
   width: 80%;
+}
+
+.Users li {
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+.User img {
+  width: 70vw;
+  max-width: 300px;
 }

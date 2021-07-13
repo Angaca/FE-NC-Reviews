@@ -14,7 +14,7 @@ const Reviews = () => {
       <ul>
         {reviews.map((review) => {
           return (
-            <Link to={`Review/${review.review_id}`}>
+            <Link to={`Reviews/${review.review_id}`}>
               <li key={review.review_id}>
                 <h4>{review.title}</h4>
                 <p>{review.review_body}</p>

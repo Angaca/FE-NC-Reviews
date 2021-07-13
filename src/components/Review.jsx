@@ -8,7 +8,7 @@ const Review = () => {
   const [review, setReview] = useState({});
 
   useEffect(() => {
-    getReview(review_id).then(({ data }) => setReview(data.review[0]));
+    getReview(review_id).then(({ data }) => setReview(data.review));
   }, [review_id]);
 
   return (
