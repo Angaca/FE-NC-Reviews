@@ -11,6 +11,7 @@ import Categories from "./components/Categories";
 import Review from "./components/Review";
 import { useState } from "react";
 import User from "./components/User";
+import EditReview from "./components/EditReview";
 
 function App() {
   const [user, setUser] = useState("");
@@ -40,6 +41,9 @@ function App() {
         </Switch>
         <Route exact path="/Users/:username">
           <User />
+        </Route>
+        <Route exact path="/Edit/:review_id">
+          <EditReview />
         </Route>
       </div>
     </UserContext.Provider>

@@ -36,3 +36,17 @@ export const getUser = async (username) => {
 export const getCategories = async () => {
   return await gamesApi.get("/categories");
 };
+
+export const patchReviews = async (review_id, inc, body) => {
+  const update = {};
+  if (inc) update.inc_votes = inc;
+  if (body) update.review_body = body;
+  return await gamesApi.patch(`/reviews/${review_id}`, update);
+};
+
+export const patchComment = async (comment_id, inc, body) => {
+  const update = {};
+  if (inc) update.inc_votes = inc;
+  if (body) update.review_body = body;
+  return await gamesApi.patch(`/comments/${comment_id}`, update);
+};
