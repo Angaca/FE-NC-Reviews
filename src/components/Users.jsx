@@ -21,11 +21,9 @@ const Users = () => {
       <ul>
         {users.map((user) => {
           return (
-            <Link to="/">
-              <li key={user.username} onClick={() => setUser(user.username)}>
-                {user.username}
-              </li>
-            </Link>
+            <li key={user.username} onClick={() => setUser(user.username)}>
+              <Link to="/">{user.username}</Link>
+            </li>
           );
         })}
       </ul>

@@ -16,7 +16,7 @@ const Review = () => {
 
   useEffect(() => {
     getReview(review_id).then(({ data }) => setReview(data.review));
-  }, [review_id]);
+  }, [review_id, review.review_body]);
 
   return (
     <div className="Review">

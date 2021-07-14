@@ -1,22 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getReview, patchComment } from "../api";
+import { getReview, patchReviews } from "../api";
 import { Link } from "react-router-dom";
 
 const EditReview = () => {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
-  const [reviewBody, setReviewBody] = useState("");
+  const [reviewBody, setReviewBody] = useState(review.review_body);
 
   useEffect(() => {
-    getReview(review_id).then(({ data }) => setReview(data.review));
+    getReview(review_id).then(({ data }) => {
+      setReview(data.review);
+      setReviewBody(data.review.review_body);
+    });
   }, [review_id]);
-
-  useEffect(() => {
-    setReviewBody("DIOPORCO");
-  }, []);
-
-  console.log(review.review_body);
 
   return (
     <div className="EditReview">
@@ -24,17 +21,22 @@ const EditReview = () => {
         <h3>Edit Review:</h3>
       </label>
       <textarea
-        // onChange={() => setReviewBody(review.review_body)}
+        onChange={(event) => setReviewBody(event.target.value)}
         name="review"
         id="review"
         cols="40"
         rows="20"
-      >
-        {reviewBody}
-      </textarea>
+        value={reviewBody}
+      ></textarea>
       <div>
         <Link to={`/Reviews/${review.review_id}`}>
-          {/* <button onClick={patchComment(review.review_id,0,review.review_body)}>Edit</button> */}
+          <button
+            onClick={() => {
+              patchReviews(review.review_id, 0, reviewBody);
+            }}
+          >
+            Edit
+          </button>
         </Link>
       </div>
     </div>
