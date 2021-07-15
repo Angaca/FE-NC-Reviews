@@ -19,19 +19,25 @@ const Review = () => {
   }, [review_id, review.review_body]);
 
   return (
-    <div className="Review">
-      <h3>{review.title}</h3>
-      <img src={review.review_img_url} alt="Review" />
-      <p>{review.review_body}</p>
-      <p>
-        <em>Review by</em> <b>{review.owner}</b>
-      </p>
-      <Link to={`/Edit/${review.review_id}`}>
-        <button>Edit</button>
-      </Link>
-      <p>Votes: {votes}</p>
-      <button onClick={() => handleVote()}>Vote</button>
-      <Comments review_id={review_id} />
+    <div className="content section container">
+      <div className="has-text-centered">
+        <h3>{review.title}</h3>
+        <img src={review.review_img_url} alt="Review" />
+        <p>{review.review_body}</p>
+        <p>
+          <em>Review by</em> <b>{review.owner}</b>
+        </p>
+        <Link to={`/Edit/${review.review_id}`}>
+          <button className="button">Edit</button>
+        </Link>
+        <p>Votes: {votes}</p>
+        <button className="button" onClick={() => handleVote()}>
+          Vote
+        </button>
+      </div>
+      <div>
+        <Comments review_id={review_id} />
+      </div>
     </div>
   );
 };

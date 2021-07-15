@@ -11,7 +11,7 @@ const User = () => {
   }, [username]);
 
   return (
-    <div className="User">
+    <div className="content section container">
       <h3>Your Info</h3>
       <img src={logged.avatar_url} alt="User Avatar" />
       <h4>{logged.name}</h4>

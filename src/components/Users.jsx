@@ -12,7 +12,7 @@ const Users = () => {
   }, []);
 
   return (
-    <div className="Users">
+    <div className="content section container">
       {user ? (
         <h3>Registered users</h3>
       ) : (

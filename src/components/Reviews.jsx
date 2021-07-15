@@ -10,19 +10,21 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className="Reviews">
+    <div className="content">
       <ul>
         {reviews.map((review) => {
           return (
-            <li key={review.review_id}>
-              <Link to={`Reviews/${review.review_id}`}>
-                <h4>{review.title}</h4>
-                <h6>Preview ⬇️</h6>
-                <p>{review.review_body.slice(0, 70)}...</p>
-                <p>Current votes: {review.votes}</p>
-                <p>Current comments: {review.comment_count}</p>
-              </Link>
-            </li>
+            <div className="section container">
+              <li key={review.review_id}>
+                <Link to={`Reviews/${review.review_id}`}>
+                  <h4>{review.title}</h4>
+                  <h6>Preview ⬇️</h6>
+                  <p>{review.review_body.slice(0, 70)}...</p>
+                  <p>Current votes: {review.votes}</p>
+                  <p>Current comments: {review.comment_count}</p>
+                </Link>
+              </li>
+            </div>
           );
         })}
       </ul>

@@ -10,14 +10,16 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="Categories">
+    <div className="content">
       <ul>
         {categories.map((category) => {
           return (
-            <li key={category.slug}>
-              <h3>{capFirstLetter(category.slug)}</h3>
-              <p>{category.description}</p>
-            </li>
+            <div className="section container">
+              <li key={category.slug}>
+                <h3>{capFirstLetter(category.slug)}</h3>
+                <p>{category.description}</p>
+              </li>
+            </div>
           );
         })}
       </ul>

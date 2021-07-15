@@ -19,19 +19,23 @@ const MostVoted = () => {
   }, []);
 
   return (
-    <div className="MostVoted">
+    <div className="content has-text-centered">
       <h3>Current Top Voted Review</h3>
       <h4>
         {topVoted.title} <br></br>
         <em>by</em> {topVoted.owner}
       </h4>
-      <p className="MostVotedReview">{topVoted.review_body}</p>
-      <p className="MostVotedCount">Votes: {votes}</p>
-      <button>Comment</button>
+      <section className="section">
+        <p className="container">{topVoted.review_body}</p>
+      </section>
+      <p>Votes: {votes}</p>
+      <button className="button">Comment</button>
       <Link to={`/Reviews/${topVoted.review_id}`}>
-        <button>See Review</button>
+        <button className="button">See Review</button>
       </Link>
-      <button onClick={() => handleVote()}>Vote</button>
+      <button className="button" onClick={() => handleVote()}>
+        Vote
+      </button>
     </div>
   );
 };

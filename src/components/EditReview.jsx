@@ -16,11 +16,12 @@ const EditReview = () => {
   }, [review_id]);
 
   return (
-    <div className="EditReview">
+    <div className="content section container">
       <label htmlFor="review">
         <h3>Edit Review:</h3>
       </label>
       <textarea
+        className="textarea"
         onChange={(event) => setReviewBody(event.target.value)}
         name="review"
         id="review"
@@ -30,8 +31,9 @@ const EditReview = () => {
       ></textarea>
       <div>
         <Link to={`/Reviews/${review.review_id}`}>
-          <div class="notification is-success">
+          <div class="has-text-centered">
             <button
+              className="button "
               onClick={() => {
                 patchReviews(review.review_id, 0, reviewBody);
               }}

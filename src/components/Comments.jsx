@@ -18,7 +18,7 @@ const Comments = ({ review_id }) => {
   }, [review_id]);
 
   return (
-    <div className="Comments">
+    <div className="content">
       <h4>Comments:</h4>
       <ul>
         {comments.map((comment) => {
@@ -27,7 +27,10 @@ const Comments = ({ review_id }) => {
               <h5>{comment.author}:</h5>
               <p>{comment.body}</p>
               <p>Votes: {comment.votes}</p>
-              <button onClick={() => handleVote(comment.comment_id)}>
+              <button
+                className="button"
+                onClick={() => handleVote(comment.comment_id)}
+              >
                 Vote
               </button>
             </li>
