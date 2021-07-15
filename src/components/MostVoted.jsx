@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getMostVotedReview, patchReviews } from "../api";
 import useVote from "../hooks/useVote";
+import Comments from "./Comments";
 
 const MostVoted = () => {
   const [topVoted, setTopVoted] = useState({});
@@ -19,23 +20,43 @@ const MostVoted = () => {
   }, []);
 
   return (
-    <div className="content has-text-centered">
-      <h3>Current Top Voted Review</h3>
-      <h4>
-        {topVoted.title} <br></br>
-        <em>by</em> {topVoted.owner}
-      </h4>
-      <section className="section">
-        <p className="container">{topVoted.review_body}</p>
-      </section>
-      <p>Votes: {votes}</p>
-      <button className="button">Comment</button>
-      <Link to={`/Reviews/${topVoted.review_id}`}>
-        <button className="button">See Review</button>
-      </Link>
-      <button className="button" onClick={() => handleVote()}>
-        Vote
-      </button>
+    <div className="section">
+      <div className="container">
+        <div className="columns is-vcentered">
+          <div className="column is-8 card">
+            <h2 className="is-size-3 card-header-title">
+              Current Top Voted Review
+            </h2>
+            <div className="card-content">
+              <h1 className="is-size-1 title">{topVoted.title} </h1>
+              <h3 className="is-size-3 subtitle">
+                <em>by</em> {topVoted.owner}
+              </h3>
+              <p className="has-text-justified is-size-5">
+                {topVoted.review_body}
+              </p>
+              <div className="columns my-3 is-vcentered">
+                <div className="column is-4">
+                  <p className="is-size-5">{votes} Current Votes</p>
+                </div>
+                <div className="column is-8">
+                  <button className="button" onClick={() => handleVote()}>
+                    Vote
+                  </button>
+                </div>
+              </div>
+              <Link to={`/Reviews/${topVoted.review_id}`}>
+                <button className="button">See Full Review</button>
+              </Link>
+            </div>
+          </div>
+          <div className="column is-4">
+            <p className="is-size-4 title">Comments</p>
+            <Comments review_id={topVoted.review_id} />
+            <button className="button">Add a Comment</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

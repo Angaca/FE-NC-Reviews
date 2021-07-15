@@ -38,6 +38,7 @@ const Nav = () => {
           <Link to={user ? "/Categories" : "/Users"} className="navbar-item">
             Categories
           </Link>
+          <hr class="navbar-divider"></hr>
         </div>
         <div className="navbar-end">
           <Link to="/Users">
