@@ -30,13 +30,15 @@ const EditReview = () => {
       ></textarea>
       <div>
         <Link to={`/Reviews/${review.review_id}`}>
-          <button
-            onClick={() => {
-              patchReviews(review.review_id, 0, reviewBody);
-            }}
-          >
-            Edit
-          </button>
+          <div class="notification is-success">
+            <button
+              onClick={() => {
+                patchReviews(review.review_id, 0, reviewBody);
+              }}
+            >
+              Edit
+            </button>
+          </div>
         </Link>
       </div>
     </div>
