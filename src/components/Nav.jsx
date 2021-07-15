@@ -13,9 +13,9 @@ const Nav = () => {
   };
 
   return (
-    <nav className="navbar has-shadow is-dark is-spaced ">
+    <nav className="navbar has-shadow is-link is-spaced ">
       <div className="navbar-brand">
-        <Link to="/" className="navbar-item is-size-3">
+        <Link to="/" className="navbar-item is-size-3 has-text-weight-bold">
           NC GAMES
         </Link>
         <p className="navbar-burger my-auto" onClick={() => toggleMenu()}>
@@ -28,7 +28,7 @@ const Nav = () => {
         <div className="navbar-start">
           <Link
             to={user ? `/Users/${user}` : "/Users"}
-            className="navbar-item is-italic"
+            className="navbar-item is-italic has-text-weight-semibold"
           >
             {user ? `Logged as: ${user}` : "Not Logged In"}
           </Link>
@@ -38,7 +38,7 @@ const Nav = () => {
           <Link to={user ? "/Categories" : "/Users"} className="navbar-item">
             Categories
           </Link>
-          <hr class="navbar-divider"></hr>
+          <hr className="navbar-divider"></hr>
         </div>
         <div className="navbar-end">
           <Link to="/Users">
