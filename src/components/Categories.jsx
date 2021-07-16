@@ -10,11 +10,11 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="Categories">
+    <div className="content">
       <ul>
         {categories.map((category) => {
           return (
-            <li key={category.slug}>
+            <li key={category.slug || 1} className="section container">
               <h3>{capFirstLetter(category.slug)}</h3>
               <p>{category.description}</p>
             </li>

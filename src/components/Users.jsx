@@ -12,16 +12,22 @@ const Users = () => {
   }, []);
 
   return (
-    <div className="Users">
+    <div className="content section container">
       {user ? (
-        <h3>Registered users</h3>
+        <h3 className="is-italic is-size-3">Registered users</h3>
       ) : (
-        <h3>Please login first by selecting your user</h3>
+        <h3 className="is-italic is-size-3">
+          Please Log In first by selecting your username
+        </h3>
       )}
       <ul>
         {users.map((user) => {
           return (
-            <li key={user.username} onClick={() => setUser(user.username)}>
+            <li
+              className="is-size-4"
+              key={user.username}
+              onClick={() => setUser(user.username)}
+            >
               <Link to="/">{user.username}</Link>
             </li>
           );

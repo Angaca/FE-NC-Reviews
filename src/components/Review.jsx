@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getReview, patchReviews } from "../api";
 import useVote from "../hooks/useVote";
+import { capFirstLetter } from "../utils";
 import Comments from "./Comments";
+import EditReview from "./EditReview";
+import Success from "./Success";
 
 const Review = () => {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
+  const [edited, setEdited] = useState(false);
+  const [edit, setEdit] = useState(false);
   const { votes, incrementVote } = useVote(review.votes);
 
   const handleVote = () => {
@@ -15,23 +20,62 @@ const Review = () => {
   };
 
   useEffect(() => {
-    getReview(review_id).then(({ data }) => setReview(data.review));
-  }, [review_id, review.review_body]);
+    getReview(review_id).then(({ data }) => {
+      setReview(data.review);
+    });
+  }, [review_id, review]);
 
   return (
-    <div className="Review">
-      <h3>{review.title}</h3>
-      <img src={review.review_img_url} alt="Review" />
-      <p>{review.review_body}</p>
-      <p>
-        <em>Review by</em> <b>{review.owner}</b>
-      </p>
-      <Link to={`/Edit/${review.review_id}`}>
-        <button>Edit</button>
-      </Link>
-      <p>Votes: {votes}</p>
-      <button onClick={() => handleVote()}>Vote</button>
+    <div className="content section container">
+      {edited ? <Success setEdited={setEdited} /> : null}
+      <div className="has-text-centered">
+        <h3 className="title is-size-3">{review.title}</h3>
+        <div className="columns is-vcentered">
+          <div className="column">
+            <figure className="image">
+              <img src={review.review_img_url} alt="Review" />
+            </figure>
+            <p className="is-size-6 is-italic my-3">
+              {votes} votes and {review.comment_count} comments
+            </p>
+          </div>
+          <div className="column">
+            <p>
+              <em>Review by</em> <b>{review.owner}</b>
+            </p>
+            <p className="is-size-5">{review.review_body}</p>
+            <p className="is-size-6 my-3">
+              <em>Category: </em>
+              {capFirstLetter(review.category)}
+            </p>
+            <p className="is-size-6 my-3">
+              <em>Game designer: </em>
+              {capFirstLetter(review.designer)}
+            </p>
+          </div>
+        </div>
+        <h4>Comments</h4>
+        <button
+          className="button is-info mx-2 mt-2"
+          onClick={() => handleVote()}
+        >
+          Vote
+        </button>
+        <button
+          className="button is-success mx-1 mt-2"
+          onClick={() => setEdit(true)}
+        >
+          Edit
+        </button>
+        {/* <button className="button is-success mx-1 mt-2">Add a Comment</button> */}
+      </div>
       <Comments review_id={review_id} />
+      <EditReview
+        setEdit={setEdit}
+        edit={edit}
+        setEdited={setEdited}
+        review={review}
+      />
     </div>
   );
 };

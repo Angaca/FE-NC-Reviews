@@ -1,19 +1,29 @@
 import { useEffect, useState } from "react";
-import { patchReviews } from "../api";
+import { patchComment } from "../api";
 
-const EditReview = ({ setEdit, edit, setEdited, review }) => {
-  const [reviewBody, setReviewBody] = useState();
+const EditComment = ({
+  setEdit,
+  edit,
+  setEdited,
+  comment,
+  setNewCommentBody,
+}) => {
+  const [commentBody, setCommentBody] = useState();
 
   useEffect(() => {
-    setReviewBody(review.review_body);
-  }, [review.review_body]);
+    setCommentBody(comment.body);
+  }, [comment.body]);
+
+  useEffect(() => {
+    setNewCommentBody(commentBody);
+  }, [commentBody, setNewCommentBody]);
 
   return (
     <div className={`modal ${edit ? "is-active" : null}`}>
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">Edit review</p>
+          <p className="modal-card-title">Edit comment</p>
           <button
             className="delete"
             aria-label="close"
@@ -21,21 +31,21 @@ const EditReview = ({ setEdit, edit, setEdited, review }) => {
           ></button>
         </header>
         <section className="modal-card-body">
-          <label htmlFor="review"></label>
+          <label htmlFor="comment"></label>
           <textarea
             className="textarea is-info"
-            onChange={(event) => setReviewBody(event.target.value)}
-            name="review"
-            id="review"
-            value={reviewBody}
-            rows="15"
+            onChange={(event) => setCommentBody(event.target.value)}
+            name="comment"
+            id="comment"
+            value={commentBody}
+            rows="5"
           ></textarea>
         </section>
         <footer className="modal-card-foot">
           <button
             className="button is-success"
             onClick={() => {
-              patchReviews(review.review_id, 0, reviewBody);
+              patchComment(comment.comment_id, 0, commentBody);
               setEdit(false);
               setEdited(true);
             }}
@@ -51,4 +61,4 @@ const EditReview = ({ setEdit, edit, setEdited, review }) => {
   );
 };
 
-export default EditReview;
+export default EditComment;

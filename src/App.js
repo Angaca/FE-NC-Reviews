@@ -1,8 +1,6 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import { UserContext } from "./contexts/User";
-import Header from "./components/Header.jsx";
-import Login from "./components/Login";
 import MostVoted from "./components/MostVoted";
 import Nav from "./components/Nav";
 import Reviews from "./components/Reviews";
@@ -19,11 +17,9 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div className="App">
-        <Header />
+        <Nav />
         <Switch>
           <Route exact path="/">
-            <Login />
-            <Nav />
             <MostVoted />
           </Route>
           <Route exact path="/Reviews">
