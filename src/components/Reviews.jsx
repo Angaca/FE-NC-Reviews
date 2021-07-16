@@ -2,18 +2,30 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getReviews } from "../api";
 import { capFirstLetter } from "../utils";
+import Pagination from "./Pagination";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
-    getReviews().then(({ data }) => setReviews(data.reviews));
-  }, []);
+    getReviews(page).then(({ data }) => {
+      setReviews(data.reviews);
+      setTotal(data.total_count);
+    });
+  }, [page]);
 
   return (
     <div className="section">
       <div className="container">
         <h1 className="title has-text-centered">Reviews</h1>
+        <Pagination
+          pages={Math.ceil(total / 10)}
+          total={total}
+          page={page}
+          setPage={setPage}
+        />
         <ul>
           {reviews.map((review) => {
             return (

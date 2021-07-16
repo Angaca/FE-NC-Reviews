@@ -9,7 +9,7 @@ const Login = () => {
   else
     return (
       <div>
-        <Link to={`/Users/${user}`}>
+        <Link to={`/Users/${user.username}`}>
           <button className="button is-light ml-3">Profile</button>
         </Link>
         <button className="button is-light ml-3" onClick={() => setUser("")}>

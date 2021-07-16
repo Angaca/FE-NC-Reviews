@@ -12,7 +12,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="navbar has-shadow is-link is-spaced ">
+    <nav className="navbar has-shadow is-link is-spaced is-fixed-top">
       <div className="navbar-brand">
         <Link to="/" className="navbar-item is-size-3 has-text-weight-bold">
           NC REVIEWS
@@ -26,10 +26,19 @@ const Nav = () => {
       <div className={`navbar-menu ${click ? "is-active" : null}`}>
         <div className="navbar-start" onClick={() => toggleMenu()}>
           <Link
-            to={user ? `/Users/${user}` : "/Users"}
+            to={user ? `/Users/${user.username}` : "/Users"}
             className="navbar-item is-italic has-text-weight-semibold"
           >
-            {user ? `Logged as: ${user}` : "Not Logged In"}
+            {user ? `Logged as: ${user.username} ` : "Not Logged In"}
+            {user ? (
+              <figure className="image is-32x32 ml-3">
+                <img
+                  className="is-rounded"
+                  src={user.avatar_url}
+                  alt="User Avatar"
+                />
+              </figure>
+            ) : null}
           </Link>
           <Link to={user ? "/Reviews" : "/Users"} className="navbar-item">
             Reviews

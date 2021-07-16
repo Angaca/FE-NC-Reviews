@@ -26,9 +26,23 @@ const Users = () => {
             <li
               className="is-size-4"
               key={user.username}
-              onClick={() => setUser(user.username)}
+              onClick={() => setUser(user)}
             >
-              <Link to="/">{user.username}</Link>
+              <div className="columns is-vcentered">
+                <div className="column">
+                  <Link to="/">{user.username}</Link>
+                </div>
+                <div className="column">
+                  <figure className="image is-64x64 mx-auto">
+                    <img
+                      className="is-rounded"
+                      src={user.avatar_url}
+                      alt="User Avatar"
+                    />
+                  </figure>
+                </div>
+                <div className="column is-10"></div>
+              </div>
             </li>
           );
         })}

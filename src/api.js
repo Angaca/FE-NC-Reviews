@@ -4,8 +4,12 @@ const gamesApi = axios.create({
   baseURL: "https://nc-games-angaca.herokuapp.com/api/",
 });
 
-export const getReviews = async () => {
-  return await gamesApi.get("/reviews");
+export const getReviews = async (pages) => {
+  return await gamesApi.get("/reviews", {
+    params: {
+      p: pages,
+    },
+  });
 };
 
 export const getMostVotedReview = async () => {
