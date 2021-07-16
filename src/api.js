@@ -50,3 +50,10 @@ export const patchComment = async (comment_id, inc, body) => {
   if (body) update.body = body;
   return await gamesApi.patch(`/comments/${comment_id}`, update);
 };
+
+export const patchUser = async (username, avatar_url, name) => {
+  const update = {};
+  if (avatar_url) update.avatar_url = avatar_url;
+  if (name) update.name = name;
+  return await gamesApi.patch(`/users/${username}`, update);
+};

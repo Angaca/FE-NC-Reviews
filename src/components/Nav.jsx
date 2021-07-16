@@ -24,7 +24,7 @@ const Nav = () => {
         </p>
       </div>
       <div className={`navbar-menu ${click ? "is-active" : null}`}>
-        <div className="navbar-start">
+        <div className="navbar-start" onClick={() => toggleMenu()}>
           <Link
             to={user ? `/Users/${user}` : "/Users"}
             className="navbar-item is-italic has-text-weight-semibold"
@@ -39,14 +39,14 @@ const Nav = () => {
           </Link>
           <hr className="navbar-divider"></hr>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end" onClick={() => toggleMenu()}>
           <Link to="/Users">
             {user ? (
-              <button className="button is-info is-dark navbar-item ml-3 my-3">
+              <button className="button is-info navbar-item ml-3 my-3">
                 All Users
               </button>
             ) : (
-              <button className="button is-info is-dark navbar-item ml-3 my-3">
+              <button className="button is-info navbar-item ml-3 my-3">
                 Log In
               </button>
             )}

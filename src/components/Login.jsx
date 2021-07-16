@@ -10,9 +10,9 @@ const Login = () => {
     return (
       <div>
         <Link to={`/Users/${user}`}>
-          <button className="button is-white ml-3">Profile</button>
+          <button className="button is-light ml-3">Profile</button>
         </Link>
-        <button className="button is-white ml-3" onClick={() => setUser("")}>
+        <button className="button is-light ml-3" onClick={() => setUser("")}>
           Logout
         </button>
       </div>

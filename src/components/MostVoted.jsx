@@ -4,6 +4,7 @@ import { getMostVotedReview, patchReviews } from "../api";
 import { UserContext } from "../contexts/User";
 import useVote from "../hooks/useVote";
 import Comments from "./Comments";
+import LoginAlert from "./LoginAlert";
 
 const MostVoted = () => {
   const [topVoted, setTopVoted] = useState({});
@@ -25,12 +26,7 @@ const MostVoted = () => {
   return (
     <div className="section">
       <div className="container">
-        {alert ? (
-          <div className="notification is-warning is-light">
-            <button className="delete" onClick={() => setAlert(false)}></button>
-            <Link to="/Users">Please Log in first</Link>
-          </div>
-        ) : null}
+        {alert ? <LoginAlert setAlert={setAlert} alert={alert} /> : null}
         <h2 className="is-size-2 has-text-centered">
           Current Top Voted Review
         </h2>
