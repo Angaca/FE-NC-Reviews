@@ -16,7 +16,7 @@ const Nav = () => {
     <nav className="navbar has-shadow is-link is-spaced ">
       <div className="navbar-brand">
         <Link to="/" className="navbar-item is-size-3 has-text-weight-bold">
-          NC GAMES
+          NC REVIEWS
         </Link>
         <p className="navbar-burger my-auto" onClick={() => toggleMenu()}>
           <span></span>
