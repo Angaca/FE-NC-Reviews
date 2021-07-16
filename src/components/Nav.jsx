@@ -9,7 +9,6 @@ const Nav = () => {
 
   const toggleMenu = () => {
     setClick(!click);
-    console.log(click);
   };
 
   return (

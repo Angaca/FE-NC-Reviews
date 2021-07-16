@@ -5,6 +5,7 @@ import useVote from "../hooks/useVote";
 import { capFirstLetter } from "../utils";
 import Comments from "./Comments";
 import EditReview from "./EditReview";
+import Success from "./Success";
 
 const Review = () => {
   const { review_id } = useParams();
@@ -26,12 +27,7 @@ const Review = () => {
 
   return (
     <div className="content section container">
-      {edited ? (
-        <div className="notification is-success is-light">
-          <button className="delete" onClick={() => setEdited(false)}></button>
-          <p>Successfully Edited</p>
-        </div>
-      ) : null}
+      {edited ? <Success setEdited={setEdited} /> : null}
       <div className="has-text-centered">
         <h3 className="title is-size-3">{review.title}</h3>
         <div className="columns is-vcentered">
@@ -60,18 +56,18 @@ const Review = () => {
         </div>
         <h4>Comments</h4>
         <button
-          className="button is-info mx-1 mt-2"
-          onClick={() => setEdit(true)}
-        >
-          Edit
-        </button>
-        <button
           className="button is-info mx-2 mt-2"
           onClick={() => handleVote()}
         >
           Vote
         </button>
-        <button className="button is-info mx-1 mt-2">Add a Comment</button>
+        <button
+          className="button is-success mx-1 mt-2"
+          onClick={() => setEdit(true)}
+        >
+          Edit
+        </button>
+        {/* <button className="button is-success mx-1 mt-2">Add a Comment</button> */}
       </div>
       <Comments review_id={review_id} />
       <EditReview

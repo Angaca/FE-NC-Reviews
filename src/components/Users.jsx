@@ -20,26 +20,19 @@ const Users = () => {
           Please Log In first by selecting your username
         </h3>
       )}
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => {
-            return (
-              <tr
-                className="is-size-4"
-                key={user.username}
-                onClick={() => setUser(user.username)}
-              >
-                <Link to="/">{user.username}</Link>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <ul>
+        {users.map((user) => {
+          return (
+            <li
+              className="is-size-4"
+              key={user.username}
+              onClick={() => setUser(user.username)}
+            >
+              <Link to="/">{user.username}</Link>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

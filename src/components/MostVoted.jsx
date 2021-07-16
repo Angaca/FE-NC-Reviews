@@ -39,10 +39,10 @@ const MostVoted = () => {
             <div className="card">
               <div className="card-content">
                 <h1 className="is-size-1 title">{topVoted.title} </h1>
-                <h3 className="is-size-3 subtitle">
+                <h3 className="is-size-4 subtitle">
                   <em>by</em> {topVoted.owner}
                 </h3>
-                <p className="has-text-justified is-size-5">
+                <p className="has-text-justified is-size-4">
                   {topVoted.review_body}
                 </p>
               </div>
@@ -67,12 +67,12 @@ const MostVoted = () => {
           <div className="column is-4">
             <p className="is-size-4 title">Comments</p>
             <div className="has-text-centered">
-              <button
-                className="button is-info"
+              {/* <button
+                className="button is-success mx-2"
                 onClick={user ? null : () => setAlert(true)}
               >
                 Add a Comment
-              </button>
+              </button> */}
             </div>
             <Comments review_id={topVoted.review_id} />
           </div>

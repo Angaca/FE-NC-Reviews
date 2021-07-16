@@ -47,6 +47,6 @@ export const patchReviews = async (review_id, inc, body) => {
 export const patchComment = async (comment_id, inc, body) => {
   const update = {};
   if (inc) update.inc_votes = inc;
-  if (body) update.review_body = body;
+  if (body) update.body = body;
   return await gamesApi.patch(`/comments/${comment_id}`, update);
 };
