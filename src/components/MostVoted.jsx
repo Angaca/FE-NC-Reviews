@@ -33,32 +33,36 @@ const MostVoted = () => {
         <div className="columns is-vcentered mt-3">
           <div className="column is-8 ">
             <div className="card">
+              <div className="card-header">
+                <div className="card-header-title">
+                  <h1 className="is-size-1 title">{topVoted.title} </h1>
+                </div>
+              </div>
               <div className="card-content">
-                <h1 className="is-size-1 title">{topVoted.title} </h1>
-                <h3 className="is-size-4 subtitle">
-                  <em>by</em> {topVoted.owner}
-                </h3>
                 <p className="has-text-justified is-size-4">
                   {topVoted.review_body}
                 </p>
+                <h3 className="is-size-5 subtitle mt-3">
+                  <em> Review by</em> {topVoted.owner}
+                </h3>
+              </div>
+              <div className="card-footer">
+                <div className="card-footer-item">
+                  <p className="is-size-5">{votes} Current Votes</p>
+                  <button
+                    className="button is-info ml-3"
+                    onClick={user ? () => handleVote() : () => setAlert(true)}
+                  >
+                    Vote
+                  </button>
+                </div>
+                <div className="card-footer-item">
+                  <Link to={user ? `/Reviews/${topVoted.review_id}` : "/Users"}>
+                    <p className="is-size-5">See full details</p>
+                  </Link>
+                </div>
               </div>
             </div>
-            <div className="columns my-3 is-vcentered">
-              <div className="column is-4">
-                <p className="is-size-5">{votes} Current Votes</p>
-              </div>
-              <div className="column is-8">
-                <button
-                  className="button is-info"
-                  onClick={user ? () => handleVote() : () => setAlert(true)}
-                >
-                  Vote
-                </button>
-              </div>
-            </div>
-            <Link to={user ? `/Reviews/${topVoted.review_id}` : "/Users"}>
-              <p className="is-size-5">See full details</p>
-            </Link>
           </div>
           <div className="column is-4">
             <p className="is-size-4 title">Comments</p>

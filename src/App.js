@@ -10,6 +10,7 @@ import Review from "./components/Review";
 import { useState } from "react";
 import User from "./components/User";
 import EditReview from "./components/EditReview";
+import Footer from "./components/Footer";
 
 function App() {
   const [user, setUser] = useState("");
@@ -34,13 +35,14 @@ function App() {
           <Route exact path="/Reviews/:review_id">
             <Review />
           </Route>
+          <Route exact path="/Users/:username">
+            <User />
+          </Route>
+          <Route exact path="/Edit/:review_id">
+            <EditReview />
+          </Route>
         </Switch>
-        <Route exact path="/Users/:username">
-          <User />
-        </Route>
-        <Route exact path="/Edit/:review_id">
-          <EditReview />
-        </Route>
+        {/* <Footer /> */}
       </div>
     </UserContext.Provider>
   );
