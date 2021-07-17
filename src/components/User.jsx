@@ -15,17 +15,23 @@ const User = () => {
   }, [username, logged]);
 
   return (
-    <div className="content section container has-text-centered">
-      {edited ? <Success setEdited={setEdited} /> : null}
-      <h3 className="title">About you</h3>
-      <figure className="image is-128x128 mx-auto">
-        <img className="is-rounded" src={logged.avatar_url} alt="User Avatar" />
-      </figure>
-      <h4 className="is-size-3">{logged.name}</h4>
-      <p className="is-size-4">{logged.username}</p>
-      <button className="button is-success" onClick={() => setEdit(true)}>
-        Edit
-      </button>
+    <div>
+      <div className="content section container has-text-centered">
+        {edited ? <Success setEdited={setEdited} /> : null}
+        <h3 className="title">About you</h3>
+        <figure className="image is-128x128 mx-auto">
+          <img
+            className="is-rounded"
+            src={logged.avatar_url}
+            alt="User Avatar"
+          />
+        </figure>
+        <h4 className="is-size-3">{logged.name}</h4>
+        <p className="is-size-4">{logged.username}</p>
+        <button className="button is-success" onClick={() => setEdit(true)}>
+          Edit
+        </button>
+      </div>
       <EditUser
         user={logged}
         edit={edit}

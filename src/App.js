@@ -18,31 +18,33 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div className="App">
-        <Nav />
-        <Switch>
-          <Route exact path="/">
-            <MostVoted />
-          </Route>
-          <Route exact path="/Reviews">
-            <Reviews />
-          </Route>
-          <Route exact path="/Users">
-            <Users />
-          </Route>
-          <Route exact path="/Categories">
-            <Categories />
-          </Route>
-          <Route exact path="/Reviews/:review_id">
-            <Review />
-          </Route>
-          <Route exact path="/Users/:username">
-            <User />
-          </Route>
-          <Route exact path="/Edit/:review_id">
-            <EditReview />
-          </Route>
-        </Switch>
-        {/* <Footer /> */}
+        <div className="wrapper">
+          <Nav />
+          <Switch>
+            <Route exact path="/">
+              <MostVoted />
+            </Route>
+            <Route exact path="/Reviews">
+              <Reviews />
+            </Route>
+            <Route exact path="/Users">
+              <Users />
+            </Route>
+            <Route exact path="/Categories">
+              <Categories />
+            </Route>
+            <Route exact path="/Reviews/:review_id">
+              <Review />
+            </Route>
+            <Route exact path="/Users/:username">
+              <User />
+            </Route>
+            <Route exact path="/Edit/:review_id">
+              <EditReview />
+            </Route>
+          </Switch>
+        </div>
+        <Footer />
       </div>
     </UserContext.Provider>
   );

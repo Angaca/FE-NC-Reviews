@@ -21,7 +21,7 @@ const EditComment = ({
   return (
     <div className={`modal ${edit ? "is-active" : null}`}>
       <div className="modal-background"></div>
-      <div className="modal-card">
+      <div className="modal-content">
         <header className="modal-card-head">
           <p className="modal-card-title">Edit comment</p>
           <button
@@ -30,17 +30,25 @@ const EditComment = ({
             onClick={() => setEdit(false)}
           ></button>
         </header>
-        <section className="modal-card-body">
-          <label htmlFor="comment"></label>
-          <textarea
-            className="textarea is-info"
-            onChange={(event) => setCommentBody(event.target.value)}
-            name="comment"
-            id="comment"
-            value={commentBody}
-            rows="5"
-          ></textarea>
-        </section>
+        <div className="modal-card-body">
+          <form>
+            <div className="field">
+              <label className="label" htmlFor="comment">
+                Comment
+              </label>
+              <div className="control">
+                <textarea
+                  className="textarea is-info"
+                  onChange={(event) => setCommentBody(event.target.value)}
+                  name="comment"
+                  id="comment"
+                  value={commentBody}
+                  rows="5"
+                ></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
         <footer className="modal-card-foot">
           <button
             className="button is-success"
