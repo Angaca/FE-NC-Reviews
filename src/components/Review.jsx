@@ -54,7 +54,6 @@ const Review = () => {
             </p>
           </div>
         </div>
-        <h4>Comments</h4>
         <button
           className="button is-info mx-2 mt-2"
           onClick={() => handleVote()}
@@ -69,6 +68,7 @@ const Review = () => {
         </button>
         {/* <button className="button is-success mx-1 mt-2">Add a Comment</button> */}
       </div>
+      <h4 className="ml-4">Comments</h4>
       <Comments review_id={review_id} />
       <EditReview
         setEdit={setEdit}
