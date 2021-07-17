@@ -7,7 +7,6 @@ import EditComment from "./EditComment";
 import Success from "./Success";
 
 const Comment = ({ comment }) => {
-  const [alert, setAlert] = useState(false);
   const [edited, setEdited] = useState(false);
   const [edit, setEdit] = useState(false);
   const [newCommentBody, setNewCommentBody] = useState(comment.body);
@@ -23,24 +22,24 @@ const Comment = ({ comment }) => {
     <div>
       {edited ? <Success setEdited={setEdited} /> : null}
       <li>
-        {alert ? (
-          <div className="notification is-warning is-light">
-            <button className="delete" onClick={() => setAlert(false)}></button>
-            <Link to="/Users">Please Log in first</Link>
-          </div>
-        ) : null}
         <div className="message is-small is-link my-3">
           <div className="message-header">
             <span className="is-italic">
               From
               <p className="has-text-weight-bold">{comment.author}</p>
             </span>
-            <button
-              className="button is-success mx-2"
-              onClick={user ? () => setEdit(true) : () => setAlert(true)}
-            >
-              Edit
-            </button>
+            {user ? (
+              <button
+                className="button is-success mx-2 mt-2"
+                onClick={() => setEdit(true)}
+              >
+                Edit
+              </button>
+            ) : (
+              <Link to="/Users">
+                <button className="button is-success mx-2">Edit</button>
+              </Link>
+            )}
           </div>
           <div className="message-body">
             <p>{newCommentBody}</p>
@@ -51,12 +50,15 @@ const Comment = ({ comment }) => {
             <p className="is-size-6">{votes} Votes</p>
           </div>
           <div className="column is-8">
-            <button
-              className="button is-info"
-              onClick={user ? () => handleVote() : () => setAlert(true)}
-            >
-              Vote
-            </button>
+            {user ? (
+              <button className="button is-info" onClick={() => handleVote()}>
+                Vote
+              </button>
+            ) : (
+              <Link to="/Users">
+                <button className="button is-info">Vote</button>
+              </Link>
+            )}
           </div>
         </div>
       </li>

@@ -44,7 +44,6 @@ const Reviews = () => {
                           </p>
                         </div>
                       </header>
-
                       <div className="card-content">
                         <p className="is-size-5">
                           {review.review_body.slice(0, 130)}...

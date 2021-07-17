@@ -40,10 +40,10 @@ const Nav = () => {
               </figure>
             ) : null}
           </Link>
-          <Link to={user ? "/Reviews" : "/Users"} className="navbar-item">
+          <Link to="/Reviews" className="navbar-item">
             Reviews
           </Link>
-          <Link to={user ? "/Categories" : "/Users"} className="navbar-item">
+          <Link to="/Categories" className="navbar-item">
             Categories
           </Link>
           <hr className="navbar-divider"></hr>

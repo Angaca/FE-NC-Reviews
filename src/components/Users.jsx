@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getUsers } from "../api";
 import { UserContext } from "../contexts/User";
 
@@ -10,6 +10,8 @@ const Users = () => {
   useEffect(() => {
     getUsers().then(({ data }) => setUsers(data.users));
   }, []);
+
+  let history = useHistory();
 
   return (
     <div className="content section container">
@@ -28,9 +30,9 @@ const Users = () => {
               key={user.username}
               onClick={() => setUser(user)}
             >
-              <div className="columns is-vcentered">
+              <div className="columns">
                 <div className="column">
-                  <Link to="/">{user.username}</Link>
+                  <Link onClick={history.goBack}>{user.username}</Link>
                 </div>
                 <div className="column">
                   <figure className="image is-64x64 mx-auto">

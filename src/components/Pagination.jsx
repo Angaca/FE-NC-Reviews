@@ -1,6 +1,6 @@
 const Pagination = ({ pages, total, page, setPage }) => {
   return (
-    <div>
+    <div className="container is-max-desktop">
       <nav
         className="pagination is-centered mx-6"
         role="navigation"

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { getReview, patchReviews } from "../api";
+import { UserContext } from "../contexts/User";
 import useVote from "../hooks/useVote";
 import { capFirstLetter } from "../utils";
 import Comments from "./Comments";
@@ -13,6 +14,7 @@ const Review = () => {
   const [edited, setEdited] = useState(false);
   const [edit, setEdit] = useState(false);
   const { votes, incrementVote } = useVote(review.votes);
+  const { user } = useContext(UserContext);
 
   const handleVote = () => {
     incrementVote();
@@ -35,9 +37,6 @@ const Review = () => {
             <figure className="image">
               <img src={review.review_img_url} alt="Review" />
             </figure>
-            <p className="is-size-6 is-italic my-3">
-              {votes} votes and {review.comment_count} comments
-            </p>
           </div>
           <div className="column">
             <p>
@@ -54,18 +53,33 @@ const Review = () => {
             </p>
           </div>
         </div>
-        <button
-          className="button is-info mx-2 mt-2"
-          onClick={() => handleVote()}
-        >
-          Vote
-        </button>
-        <button
-          className="button is-success mx-1 mt-2"
-          onClick={() => setEdit(true)}
-        >
-          Edit
-        </button>
+        <p className="is-size-6 is-italic my-3">
+          {votes} votes and {review.comment_count} comments
+        </p>
+        {user ? (
+          <button
+            className="button is-info mx-2 mt-2"
+            onClick={() => handleVote()}
+          >
+            Vote
+          </button>
+        ) : (
+          <Link to="/Users">
+            <button className="button is-info mx-2 mt-2">Vote</button>
+          </Link>
+        )}
+        {user ? (
+          <button
+            className="button is-success mx-2 mt-2"
+            onClick={() => setEdit(true)}
+          >
+            Edit
+          </button>
+        ) : (
+          <Link to="/Users">
+            <button className="button is-success mx-2 mt-2">Edit</button>
+          </Link>
+        )}
         {/* <button className="button is-success mx-1 mt-2">Add a Comment</button> */}
       </div>
       <h4 className="ml-4">Comments</h4>
