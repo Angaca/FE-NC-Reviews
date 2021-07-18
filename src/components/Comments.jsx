@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import { getComments } from "../api";
 import Comment from "./Comment";
 
-const Comments = ({ review_id }) => {
+const Comments = ({ review_id, setLoaded }) => {
   const [comments, setComments] = useState(["There are no comments yet..."]);
 
   useEffect(() => {
     if (review_id) {
       getComments(review_id).then(({ data }) => {
         setComments(data.comments);
+        setLoaded(true);
       });
     }
-  }, [review_id]);
+  }, [review_id, setLoaded]);
 
   return (
     <div className="content">

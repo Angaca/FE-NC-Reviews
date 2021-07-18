@@ -32,7 +32,9 @@ const Users = () => {
             >
               <div className="columns">
                 <div className="column">
-                  <Link onClick={history.goBack}>{user.username}</Link>
+                  <Link to="" onClick={history.goBack}>
+                    {user.username}
+                  </Link>
                 </div>
                 <div className="column">
                   <figure className="image is-64x64 mx-auto">
