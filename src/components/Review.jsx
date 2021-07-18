@@ -26,7 +26,7 @@ const Review = () => {
     getReview(review_id).then(({ data }) => {
       setReview(data.review);
     });
-  }, [review_id, review]);
+  }, [review_id, edit, edited]);
 
   if (Object.keys(review).length === 0 || !loaded) {
     return (
