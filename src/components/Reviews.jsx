@@ -36,9 +36,11 @@ const Reviews = () => {
                     <div className="card my-5">
                       <header className="card-header has-background-success-light">
                         <div>
-                          <h4 className="is-size-4 card-header-title has-text-centered has-text-success ">
-                            {review.title}
-                          </h4>
+                          <Link to={`Reviews/${review.review_id}`}>
+                            <h4 className="is-size-4 card-header-title has-text-centered has-text-success ">
+                              {review.title}
+                            </h4>
+                          </Link>
                           <p className="is-size7 ml-4 mb-2">
                             by {review.owner}
                           </p>

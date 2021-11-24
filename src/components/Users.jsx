@@ -19,22 +19,16 @@ const Users = () => {
         <h3 className="is-italic is-size-3">Registered users</h3>
       ) : (
         <h3 className="is-italic is-size-3">
-          Please Log In first by selecting your username
+          Please Log In by selecting your username
         </h3>
       )}
       <ul>
         {users.map((user) => {
           return (
-            <li
-              className="is-size-4"
-              key={user.username}
-              onClick={() => setUser(user)}
-            >
+            <li className="is-size-4" key={user.username}>
               <div className="columns">
                 <div className="column">
-                  <Link to="" onClick={history.goBack}>
-                    {user.username}
-                  </Link>
+                  <Link to={`/Users/${user.username}`}>{user.username}</Link>
                 </div>
                 <div className="column">
                   <figure className="image is-64x64 mx-auto">
@@ -45,6 +39,12 @@ const Users = () => {
                     />
                   </figure>
                 </div>
+                <button
+                  className="button is-success m-3"
+                  onClick={() => setUser(user)}
+                >
+                  Select
+                </button>
                 <div className="column is-10"></div>
               </div>
             </li>

@@ -76,7 +76,7 @@ const MostVoted = () => {
                     </div>
                     <div className="card-footer-item">
                       <Link to={`/Reviews/${topVoted.review_id}`}>
-                        <p className="is-size-5">See full details</p>
+                        <p className="is-size-5">See full review</p>
                       </Link>
                     </div>
                   </div>

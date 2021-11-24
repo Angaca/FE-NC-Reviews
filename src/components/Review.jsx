@@ -14,11 +14,13 @@ const Review = () => {
   const [edited, setEdited] = useState(false);
   const [edit, setEdit] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [voted, setVoted] = useState(false);
   const { votes, incrementVote } = useVote(review.votes);
   const { user } = useContext(UserContext);
 
   const handleVote = () => {
     incrementVote();
+    setVoted(true);
     patchReviews(review.review_id, 1);
   };
 
@@ -70,30 +72,33 @@ const Review = () => {
             {votes} votes and {review.comment_count} comments
           </p>
           {user ? (
-            <button
-              className="button is-info mx-2 mt-2"
-              onClick={() => handleVote()}
-            >
-              Vote
-            </button>
+            <>
+              {user.username === review.owner ? (
+                <button
+                  className="button is-success mx-2 mt-2"
+                  onClick={() => setEdit(true)}
+                >
+                  Edit
+                </button>
+              ) : (
+                <button
+                  className="button is-info mx-2 mt-2"
+                  disabled={voted}
+                  onClick={() => handleVote()}
+                >
+                  Vote
+                </button>
+              )}
+              {/* <button className="button is-success mx-1 mt-2">
+                Add a Comment
+              </button> */}
+              {null}
+            </>
           ) : (
             <Link to="/Users">
-              <button className="button is-info mx-2 mt-2">Vote</button>
+              <button className="button is-info mx-2 mt-2">Log In</button>
             </Link>
           )}
-          {user ? (
-            <button
-              className="button is-success mx-2 mt-2"
-              onClick={() => setEdit(true)}
-            >
-              Edit
-            </button>
-          ) : (
-            <Link to="/Users">
-              <button className="button is-success mx-2 mt-2">Edit</button>
-            </Link>
-          )}
-          {/* <button className="button is-success mx-1 mt-2">Add a Comment</button> */}
         </div>
         <h4 className="ml-4">Comments</h4>
         <Comments setLoaded={setLoaded} review_id={review_id} />

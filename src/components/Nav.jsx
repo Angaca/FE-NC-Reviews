@@ -46,15 +46,14 @@ const Nav = () => {
           <Link to="/Categories" className="navbar-item">
             Categories
           </Link>
+          <Link to="/Users" className="navbar-item">
+            Users
+          </Link>
           <hr className="navbar-divider"></hr>
         </div>
         <div className="navbar-end" onClick={() => toggleMenu()}>
           <Link to="/Users">
-            {user ? (
-              <button className="button is-info navbar-item ml-3 my-3">
-                All Users
-              </button>
-            ) : (
+            {user ? null : (
               <button className="button is-info navbar-item ml-3 my-3">
                 Log In
               </button>

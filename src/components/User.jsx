@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getUser } from "../api";
+import { UserContext } from "../contexts/User";
 import EditUser from "./EditUser";
 import Success from "./Success";
 
@@ -8,6 +9,7 @@ const User = () => {
   const [logged, setLogged] = useState("");
   const [edited, setEdited] = useState(false);
   const [edit, setEdit] = useState(false);
+  const { setUser } = useContext(UserContext);
   const { username } = useParams();
 
   useEffect(() => {
@@ -28,6 +30,13 @@ const User = () => {
         </figure>
         <h4 className="is-size-3">{logged.name}</h4>
         <p className="is-size-4">{logged.username}</p>
+        <button
+          className="button is-success m-3"
+          onClick={() => setUser(logged)}
+        >
+          Select
+        </button>
+        <br />
         <button className="button is-success" onClick={() => setEdit(true)}>
           Edit
         </button>
